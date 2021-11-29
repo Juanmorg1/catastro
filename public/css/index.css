@@ -109,8 +109,14 @@ div.index_form .cont {
   width: 100%;
   margin: 1em 0 .5em;
 }
-.cont button {
+.cont .btn {
   width: 60%;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: .5em;
+}
+.cont .btn:hover{
+  background:rgb(74, 184, 23);
 }
 /* *************** Footer *************** */
 
