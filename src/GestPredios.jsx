@@ -1,13 +1,23 @@
+import { Link } from "react-router-dom";
+
 function GestPredios() {
   return (
     <div className="container">
       <header class="index_home">
         <h1 class="title">Alcaldia de ibague</h1>
         <nav class="navbar subtitle">
-          <div className="active">Predios</div>
-          <div>Cronograma</div>
-          <div>Pagos</div>
-          <div>Cerrar Sesión</div>
+        <Link to="/gestPredios" className="active">
+            Predios
+          </Link>
+          <Link to="/CronoPagos" className="">
+            Cronograma
+          </Link>
+          <Link to="/home" className="">
+            Pagos
+          </Link>
+          <Link to="/home" className="">
+            Cerrar Sesión
+          </Link>
         </nav>
       </header>
       <section className="content">

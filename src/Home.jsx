@@ -9,7 +9,7 @@ function Home() {
           <Link to="/gestPredios" className="">
             Predios
           </Link>
-          <Link to="/home" className="">
+          <Link to="/CronoPagos" className="">
             Cronograma
           </Link>
           <Link to="/home" className="">
