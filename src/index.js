@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import './gesti_n_catastral.css';
 import App from './App';
+import Home from './Home'
+import GestPred from './GestPredios'
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 ReactDOM.render(
-  <App />,
+  <React.StrictMode>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<App />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/gestPredios" element={<GestPred />} />
+      </Routes>
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
