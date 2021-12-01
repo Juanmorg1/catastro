@@ -12,7 +12,7 @@ function Home() {
           <Link to="/CronoPagos" className="">
             Cronograma
           </Link>
-          <Link to="/home" className="">
+          <Link to="/PlatPagos" className="">
             Pagos
           </Link>
           <Link to="/home" className="">

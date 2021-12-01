@@ -37,6 +37,9 @@
   padding: 5% 0;
   width: 60%;
 }
+.inputs div{
+  width: 100%;
+}
 
 .inputs div input[type="text"] {
   width: 100%;

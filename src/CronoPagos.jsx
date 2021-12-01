@@ -12,7 +12,7 @@ function CronoPagos() {
           <Link to="/CronoPagos" className="active">
             Cronograma
           </Link>
-          <Link to="/home" className="">
+          <Link to="/PlatPagos" className="">
             Pagos
           </Link>
           <Link to="/home" className="">
@@ -41,7 +41,7 @@ function CronoPagos() {
             <img src="img/cronograma.jpg" alt="" />
             <p className="">Cronograma de Pagos</p>
           </div>
-          <div className="inputs txt">
+          <form className="inputs txt" method="post" action="">
             <div>
               <label htmlFor="fechaMax">
                 Fecha Maxima de Pago de Impuestos (Mes-Dia-Año)
@@ -68,7 +68,7 @@ function CronoPagos() {
             </div>
             <button>Guardar</button>
             <button>Generar Cobro</button>
-          </div>
+          </form>
         </section>
       </section>
       <footer className="foot_2">
