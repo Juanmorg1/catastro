@@ -19,12 +19,6 @@
   align-items: center;
 }
 
-.content_1 dl {
-  /* display: flex;
-    flex-wrap: wrap;
-    align-content: space-around; */
-}
-
 .content_1 dt {
   margin: 1em 0;
 }

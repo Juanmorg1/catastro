@@ -8,6 +8,7 @@ import Home from "./Home";
 import GestPred from "./GestPredios";
 import CronoPagos from "./CronoPagos";
 import PlatPagos from "./PlatPagos";
+import GestUsuarios from "./GestUsuarios";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Route path="/CronoPagos" element={<CronoPagos />} />
         <Route path="/PlatPagos" element={<PlatPagos />} />
         <Route path="/PlatPagos_UE" element={<PlatPagos_UE />} />
+        <Route path="/gestUsuarios" element={<GestUsuarios />} />
       </Routes>
     </Router>
   </React.StrictMode>,
