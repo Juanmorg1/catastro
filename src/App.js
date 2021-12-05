@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import LoginModal from "./components/LoginModal"
 import FooterContent from "./components/FooterContent";
 

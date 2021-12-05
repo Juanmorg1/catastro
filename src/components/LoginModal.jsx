@@ -1,3 +1,6 @@
+import { React, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 function LoginModal() {
   function translate() {
     let overlay = document.getElementById("over1"),
@@ -12,7 +15,7 @@ function LoginModal() {
     }
     overlay.style.transform = "scale(0.9)";
     setTimeout(t, 600);
-  }
+  };
 
   function back() {
     let overlay = document.getElementById("over1"),
@@ -25,7 +28,43 @@ function LoginModal() {
       overlay2.style.transform = "";
       overlay.style.transform = "";
     }
-  }
+  };
+  let usuarios_login = { "admin@gmail.com": "administrador", "usuariointerno@gmail.com": "usuariointerno", "usuarioexterno@gmail.com": "usuarioexterno" };
+  const user_inicio = useRef();
+  const pass_inicio = useRef();
+  const navegacion=useNavigate();
+
+  const iniciosesion = () => {
+      const usu_inicio = user_inicio.current.value;
+      const pas_inicio = pass_inicio.current.value;
+      console.log(usuarios_login);
+      if (usuarios_login[usu_inicio] === pas_inicio) {
+          navegacion("/Home")
+      }
+      else {
+          alert("informacion incorrecta")
+      }
+      
+  };
+  
+  let date_new_users=[]
+  const Usuario=useRef();
+  const Contraseña=useRef();
+  const Correo=useRef();
+
+  const registro=()=>{
+    const usu=Usuario.current.value;
+    const pass=Contraseña.current.value;
+    const correo=Correo.current.value;
+      if (correo in date_new_users) {
+        alert("correo ya registrado")
+      }
+      else{
+        const date={Usuario:usu,Contraseña:pass,Correo:correo,type_user:"Usuario externo"};
+        date_new_users.push(date);
+        alert("Usuario externo registrado exitosamente")
+      }
+  };
 
   return (
     <div className="login_forms">
@@ -37,12 +76,12 @@ function LoginModal() {
                 <label className="subtitle" for="user">
                   Usuario
                 </label>
-                <input className="subtitle" type="text" name="" id="user" />
+                <input className="subtitle" type="text" name="" id="user" ref={user_inicio}/>
                 <label className="subtitle" for="pass">
                   Contraseña
                 </label>
-                <input className="subtitle" type="password" name="" id="pass" />
-                <button className="btn">Iniciar Sesión</button>
+                <input className="subtitle" type="password" name="" id="pass" ref={pass_inicio}/>
+                <button className="btn" onClick={iniciosesion}>Iniciar Sesión</button>
               </form>
               <a className="txt" href="#">
                 ¿Has Olvidado la Contraseña?
@@ -71,7 +110,7 @@ function LoginModal() {
                   <label className="subtitle" for="user_r">
                     Nombre de Usuario
                   </label>
-                  <input className="subtitle" type="text" name="" id="user_r" />
+                  <input className="subtitle" type="text" name="" id="user_r" ref={Usuario}/>
                 </div>
                 <div>
                   <label className="subtitle" for="pass_r">
@@ -82,15 +121,16 @@ function LoginModal() {
                     type="password"
                     name=""
                     id="pass_r"
+                    ref={Contraseña}
                   />
                 </div>
                 <div>
                   <label className="subtitle" for="mail">
                     Correo
                   </label>
-                  <input className="subtitle" type="email" name="" id="mail" />
+                  <input className="subtitle" type="email" name="" id="mail"  ref={Correo}/>
                 </div>
-                <button className="btn">Registrarse</button>
+                <button className="btn" onClick={registro}>Registrarse</button>
               </form>
             </div>
           </div>
