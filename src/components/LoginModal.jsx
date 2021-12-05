@@ -63,6 +63,7 @@ function LoginModal() {
         const date={Usuario:usu,Contraseña:pass,Correo:correo,type_user:"Usuario externo"};
         date_new_users.push(date);
         alert("Usuario externo registrado exitosamente")
+        console.log(date_new_users)
       }
   };
 
@@ -130,7 +131,7 @@ function LoginModal() {
                   </label>
                   <input className="subtitle" type="email" name="" id="mail"  ref={Correo}/>
                 </div>
-                <button className="btn" onClick={registro}>Registrarse</button>
+                <button type = "button"className="btn" onClick={registro}>Registrarse</button>
               </form>
             </div>
           </div>
