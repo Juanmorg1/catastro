@@ -157,9 +157,6 @@ function LoginModal() {
                     ref={Correo}
                   />
                 </div>
-                <button className="btn" onClick={registro}>
-                  Registrarse
-                </button>
                 <button type="button" className="btn" onClick={registro}>
                   Registrarse
                 </button>
