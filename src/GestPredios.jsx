@@ -104,7 +104,7 @@ function GestPredios() {
             <Link to="/PlatPagos" className="">
               Pagos
             </Link>
-            <Link to="/home" className="">
+            <Link to="/" className="">
               Cerrar Sesión
             </Link>
           </nav>

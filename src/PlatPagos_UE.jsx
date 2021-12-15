@@ -15,7 +15,7 @@ function PlatPagos_UE() {
           <Link to="/PlatPagos" className="active">
             Pagos
           </Link>
-          <Link to="/home" className="">
+          <Link to="/" className="">
             Cerrar Sesión
           </Link>
         </nav>
