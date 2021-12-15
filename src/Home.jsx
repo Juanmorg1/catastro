@@ -24,21 +24,27 @@ function Home() {
         <div class="home_content">
           <div class="icons subtitle">
             <div class="icon_cont">
+              <Link to="/gestPredios">
               <img
                 src="img/workplace_results_professional_report_accounting_during_1.png"
                 alt=""
               />
+              </Link>
               <p>Gestión de Predios</p>
             </div>
             <div class="icon_cont">
+            <Link to="/CronoPagos" className="">
               <img
                 src="img/group_business_people_having_meeting_1.png"
                 alt=""
               />
+            </Link>
               <p>Cronograma de Pagos</p>
             </div>
             <div class="icon_cont">
+            <Link to="/PlatPagos" className="">
               <img src="img/hand_with_credit_card_laptop_1.png" alt="" />
+            </Link>
               <p>Plataforma de Pago</p>
             </div>
           </div>
