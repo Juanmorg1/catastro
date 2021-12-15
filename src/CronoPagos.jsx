@@ -1,7 +1,36 @@
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 
-function CronoPagos() {
+function CronoPagos(){
+  const fechaMax = useRef();
+  const fechaDes = useRef();
+  const descuento = useRef();
+  const id = useRef();
+  const [alerta,setAlerta] = useState(false);
+
+  let cronoPa=[];
+  const guardar = () =>{
+      const max = fechaMax.current.value;
+      const fdes = fechaDes.current.value;
+      const des = descuento.current.value;
+      const i = id.current.value;
+      const pago = {fechaMax:max,fechaDes:fdes,descuento:des,id:i};
+      cronoPa.push(pago);
+      localStorage.setItem("cronoPa",JSON.stringify(cronoPa));
+      console.log(cronoPa);
+      setAlerta(true);
+      fechaMax.current.value="";
+      fechaDes.current.value="";
+      descuento.current.value="";
+      id.current.value="";
+      setTimeout(() => setAlerta(false),3000);
+  };
+  const GenCo = () =>{
+        
+  };
+
   return (
+
     <div className="container">
       <header class="index_home">
         <h1 class="title">Alcaldia de ibague</h1>
@@ -66,8 +95,8 @@ function CronoPagos() {
               </label>
               <input type="text" name="" id="idUserAutori" />
             </div>
-            <button>Guardar</button>
-            <button>Generar Cobro</button>
+            <button type="button" className="btn btn-primary" onClick={guardar}> Guardar </button>
+            <button type="button" className="btn btn-primary" onClick={GenCo}> Generar Cobro </button>
           </form>
         </section>
       </section>

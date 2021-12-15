@@ -9,11 +9,6 @@ import GestPred from "./GestPredios";
 import CronoPagos from "./CronoPagos";
 import PlatPagos from "./PlatPagos";
 import GestUsuarios from "./GestUsuarios";
-const mongoose = require("mongoose")
-
-mongoose.connect("mongodb://localhost:27017/predios")
-.then(res => console.log(res,"Conectado"))
-.catch(err => console.log(err));
 
 ReactDOM.render(
   <React.StrictMode>
