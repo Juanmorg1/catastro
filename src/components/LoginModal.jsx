@@ -62,7 +62,6 @@ function LoginModal() {
     // }
   };
 
-  let date_new_users = [];
   const Usuario = useRef();
   const Contraseña = useRef();
   const Correo = useRef();
@@ -70,10 +69,10 @@ function LoginModal() {
     const usu = Usuario.current.value;
     const pass = Contraseña.current.value;
     const correo = Correo.current.value;
-    fethc("http://localhost:8080/user/login",{
+    fetch("http://localhost:8080/user/login",{
       headers: {"content-type": "application/json"},
       method: "POST",
-      body: JSON.stringify({Usuario,pass,correo})
+      body: JSON.stringify({usu,pass,correo})
     })
     .then(res => res.json())
     .then(res =>{
