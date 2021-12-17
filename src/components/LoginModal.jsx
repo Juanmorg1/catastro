@@ -1,6 +1,9 @@
-import { React, useRef } from "react";
+import { React, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function LoginModal() {
+  const [error, setError] = useState();
+  const [msgError, setMsgError] = useState();
+
   function translate() {
     let overlay = document.getElementById("over1"),
       overlay2 = document.getElementById("over2");
@@ -25,23 +28,38 @@ function LoginModal() {
       overlay.style.transform = "";
     }
   }
-  let usuarios_login = {
-    "admin@gmail.com": "administrador",
-    "usuariointerno@gmail.com": "usuariointerno",
-    "usuarioexterno@gmail.com": "usuarioexterno",
-  };
+  // let usuarios_login = {
+  //   "admin@gmail.com": "administrador",
+  //   "usuariointerno@gmail.com": "usuariointerno",
+  //   "usuarioexterno@gmail.com": "usuarioexterno",
+  // };
   const user_inicio = useRef();
   const pass_inicio = useRef();
   const navegacion = useNavigate();
   const iniciosesion = () => {
     const usu_inicio = user_inicio.current.value;
     const pas_inicio = pass_inicio.current.value;
-    console.log(usuarios_login);
-    if (usuarios_login[usu_inicio] === pas_inicio) {
-      navegacion("/Home");
-    } else {
-      alert("informacion incorrecta");
-    }
+    fetch("http://localhost:8080/user/login",{
+      headers: {"content-type":"application/json"},
+      method: "POST",
+      body: JSON.stringify({usu_inicio,pas_inicio})
+    })
+    .then(res => res.json())
+    .then(res =>{
+      if(res.estado === "OK"){
+        navegacion("/Home");
+      }
+      else{
+        setError(true);
+        setMsgError(res.msg);
+      }
+    })
+    // console.log(usuarios_login);
+    // if (usuarios_login[usu_inicio] === pas_inicio) {
+      
+    // } else {
+    //   alert("informacion incorrecta");
+    // }
   };
 
   let date_new_users = [];
@@ -52,19 +70,34 @@ function LoginModal() {
     const usu = Usuario.current.value;
     const pass = Contraseña.current.value;
     const correo = Correo.current.value;
-    if (correo in date_new_users) {
-      alert("correo ya registrado");
-    } else {
-      const date = {
-        Usuario: usu,
-        Contraseña: pass,
-        Correo: correo,
-        type_user: "Usuario externo",
-      };
-      date_new_users.push(date);
-      alert("Usuario externo registrado exitosamente");
-      console.log(date_new_users);
-    }
+    fethc("http://localhost:8080/user/login",{
+      headers: {"content-type": "application/json"},
+      method: "POST",
+      body: JSON.stringify({Usuario,pass,correo})
+    })
+    .then(res => res.json())
+    .then(res =>{
+      if(res.estado === "OK"){
+        alert("Usuario externo registrado exitosamente");
+      }
+      else{
+        setError(true);
+        setMsgError(res.msg);
+      }
+    })
+    // if (correo in date_new_users) {
+    //   alert("correo ya registrado");
+    // } else {
+    //   const date = {
+    //     Usuario: usu,
+    //     Contraseña: pass,
+    //     Correo: correo,
+    //     type_user: "Usuario externo",
+    //   };
+    //   date_new_users.push(date);
+    //   alert("Usuario externo registrado exitosamente");
+    //   console.log(date_new_users);
+    // }
   };
 
   return (
@@ -73,6 +106,7 @@ function LoginModal() {
         <div className="anime_cont">
           <div className="animation_cont">
             <div className="login" id="over1">
+              {error && <div className="alert alert-danger">{msgError}</div>}
               <form action="" method="">
                 <label className="subtitle" for="user">
                   Usuario

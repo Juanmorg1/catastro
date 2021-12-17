@@ -4,7 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PlatPagos_UE from "./PlatPagos_UE";
-import Home from "./Home";
+import Home from "./components/Home";
 import GestPred from "./GestPredios";
 import CronoPagos from "./CronoPagos";
 import PlatPagos from "./PlatPagos";
