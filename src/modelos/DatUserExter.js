@@ -21,5 +21,5 @@ const DatUserExter = new Schema({
     }
 })
 
-const DatUserExter = model("DatosUsuarios",DatUserExter);
+const DatUserExter = model("DatosUsuariosExternos",DatUserExter);
 exports.DatUserExter=DatUserExter;
