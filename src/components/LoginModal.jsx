@@ -37,12 +37,12 @@ function LoginModal() {
   const pass_inicio = useRef();
   const navegacion = useNavigate();
   const iniciosesion = () => {
-    const usu_inicio = user_inicio.current.value;
-    const pas_inicio = pass_inicio.current.value;
+    const correo = user_inicio.current.value;
+    const contrasena = pass_inicio.current.value;
     fetch("http://localhost:8080/user/login",{
       headers: {"content-type":"application/json"},
       method: "POST",
-      body: JSON.stringify({usu_inicio,pas_inicio})
+      body: JSON.stringify({correo,contrasena})
     })
     .then(res => res.json())
     .then(res =>{
@@ -66,13 +66,14 @@ function LoginModal() {
   const Contraseña = useRef();
   const Correo = useRef();
   const registro = () => {
-    const usu = Usuario.current.value;
-    const pass = Contraseña.current.value;
+    const usuario = Usuario.current.value;
+    const contrasena = Contraseña.current.value;
     const correo = Correo.current.value;
-    fetch("http://localhost:8080/user/login",{
+    const rol= "Usuario Externo"
+    fetch("http://localhost:8080/user/guardar_user",{
       headers: {"content-type": "application/json"},
       method: "POST",
-      body: JSON.stringify({usu,pass,correo})
+      body: JSON.stringify({usuario,contrasena,correo,rol})
     })
     .then(res => res.json())
     .then(res =>{
@@ -127,7 +128,7 @@ function LoginModal() {
                   id="pass"
                   ref={pass_inicio}
                 />
-                <button className="btn" onClick={iniciosesion}>
+                <button type="button" className="btn" onClick={iniciosesion}>
                   Iniciar Sesión
                 </button>
               </form>
@@ -190,7 +191,7 @@ function LoginModal() {
                     ref={Correo}
                   />
                 </div>
-                <button type="button" className="btn" onClick={registro}>
+                <button type="button" className="btn" onClick={ registro }>
                   Registrarse
                 </button>
               </form>
