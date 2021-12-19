@@ -47,7 +47,9 @@ function LoginModal() {
     .then(res => res.json())
     .then(res =>{
       if(res.estado === "OK"){
-        navegacion("/Home");
+        console.log("Inicia sesión -----------------");
+        {window.location.href = "/Home"}
+        // navegacion("/components/Home");
       }
       else{
         setError(true);
@@ -69,35 +71,27 @@ function LoginModal() {
     const usuario = Usuario.current.value;
     const contrasena = Contraseña.current.value;
     const correo = Correo.current.value;
-    const rol= "Usuario Externo"
+    const rol = "Usuario Externo"
     fetch("http://localhost:8080/user/guardar_user",{
       headers: {"content-type": "application/json"},
       method: "POST",
-      body: JSON.stringify({usuario,contrasena,correo,rol})
+      body: JSON.stringify({usuario,correo,contrasena,rol})
     })
     .then(res => res.json())
     .then(res =>{
       if(res.estado === "OK"){
-        alert("Usuario externo registrado exitosamente");
+        setError(true);
+        setMsgError("Usuario registrado");
+        Usuario.current.value = "";
+        Contraseña.current.value = "";
+        Correo.current.value = "";
+            
       }
       else{
         setError(true);
         setMsgError(res.msg);
       }
     })
-    // if (correo in date_new_users) {
-    //   alert("correo ya registrado");
-    // } else {
-    //   const date = {
-    //     Usuario: usu,
-    //     Contraseña: pass,
-    //     Correo: correo,
-    //     type_user: "Usuario externo",
-    //   };
-    //   date_new_users.push(date);
-    //   alert("Usuario externo registrado exitosamente");
-    //   console.log(date_new_users);
-    // }
   };
 
   return (
@@ -108,7 +102,7 @@ function LoginModal() {
             <div className="login" id="over1">
               {error && <div className="alert alert-danger">{msgError}</div>}
               <form action="" method="">
-                <label className="subtitle" for="user">
+                <label className="subtitle" htmlFor="user">
                   Usuario
                 </label>
                 <input
@@ -118,7 +112,7 @@ function LoginModal() {
                   id="user"
                   ref={user_inicio}
                 />
-                <label className="subtitle" for="pass">
+                <label className="subtitle" htmlFor="pass">
                   Contraseña
                 </label>
                 <input
@@ -142,21 +136,22 @@ function LoginModal() {
                 id="reg"
                 onClick={translate}
               >
-                Registrarse
+                Registro
               </button>
             </div>
             <div className="register" id="over2">
               <img
                 src="img/back_icon.png"
                 alt="back icon"
-                srcset=""
+                srcSet = ""
                 width="25"
                 id="back"
                 onClick={back}
               />
+              {error && <div className="alert alert-danger">{msgError}</div>}
               <form action="" method="">
                 <div>
-                  <label className="subtitle" for="user_r">
+                  <label className="subtitle" htmlFor="user_r">
                     Nombre de Usuario
                   </label>
                   <input
@@ -168,7 +163,7 @@ function LoginModal() {
                   />
                 </div>
                 <div>
-                  <label className="subtitle" for="pass_r">
+                  <label className="subtitle" htmlFor="pass_r">
                     Contraseña
                   </label>
                   <input
@@ -180,7 +175,7 @@ function LoginModal() {
                   />
                 </div>
                 <div>
-                  <label className="subtitle" for="mail">
+                  <label className="subtitle" htmlFor="mail">
                     Correo
                   </label>
                   <input
